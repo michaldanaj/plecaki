@@ -104,25 +104,9 @@ int main(int argc, char** argv) {
         cout<<plecaki;
     }
 
-    Algorytm alg(&plecaki);
-    try{
-        
-        //for (int i=0; i<przedmioty.size(); i++){
-            
-        int i=0;
-        bool czy_pelne=false;
-        
-        while(i<przedmioty.size() && !czy_pelne){
-            if (debug)
-                cout <<"*************    Wkladam przedmiot "<< i+1 <<"*************\n\n";                        
-            czy_pelne=alg.dodaj_przedmiot();
-            i++;
-        }
-  //          cout<<"po wykonaniu ruchu"<<endl;
-//            cout<<plecaki;
-            
-        //}
-        //wysw_przedmioty();
+    Algorytm alg(&plecaki, przedmioty.size());
+    try{        
+        alg.start();
     }
     catch(string kom){
         cout << kom;

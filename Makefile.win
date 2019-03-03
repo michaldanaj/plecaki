@@ -1,18 +1,17 @@
 # Project: Projekt1
 # Makefile created by Dev-C++ 5.11
 
-CPP      = g++.exe
-CC       = gcc.exe
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-RES      = Plecak_private.res
-OBJ      = Przedmiot.o main.o Plecak.o Plecaki.o Algorytm.o $(RES)
-LINKOBJ  = Przedmiot.o main.o Plecak.o Plecaki.o Algorytm.o $(RES)
-LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib"
+OBJ      = Przedmiot.o main.o Plecak.o Plecaki.o Algorytm.o AlgorytmBF.o
+LINKOBJ  = Przedmiot.o main.o Plecak.o Plecaki.o Algorytm.o AlgorytmBF.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -g3
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = Plecak.exe
-CXXFLAGS = $(CXXINCS) -static-libgcc -std=gnu++14
-CFLAGS   = $(INCS) -static-libgcc -std=gnu++14
+CXXFLAGS = $(CXXINCS) -g3 -static-libgcc -std=gnu++14
+CFLAGS   = $(INCS) -g3 -static-libgcc -std=gnu++14
 RM       = rm.exe -f
 
 .PHONY: all all-before all-after clean clean-custom
@@ -40,6 +39,5 @@ Plecaki.o: Plecaki.cpp
 Algorytm.o: Algorytm.cpp
 	$(CPP) -c Algorytm.cpp -o Algorytm.o $(CXXFLAGS)
 
-Plecak_private.res: Plecak_private.rc 
-	$(WINDRES) -i Plecak_private.rc --input-format=rc -o Plecak_private.res -O coff 
-
+AlgorytmBF.o: AlgorytmBF.cpp
+	$(CPP) -c AlgorytmBF.cpp -o AlgorytmBF.o $(CXXFLAGS)

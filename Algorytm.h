@@ -28,8 +28,13 @@ class Algorytm{
     vector<bool> odwiedzony;        //czy plecka ju¿ by³ wykorzystany w sekwencji
     double ocena_max=0;             //zysk maksymalizuj¹cej sekwencji ruchów
     double ocena_akt=0;             //zysk aktualnej sekwencji testowanych ruchów
+    const int ile_przedmiotow;      //ile przedmiotów
         
-    Algorytm(Plecaki *plecaki_);
+    Algorytm(Plecaki *plecaki_, int ile_przedmiotow_);
+    
+    //Startuje algorytm. W jego wyniku Plecaki zostan¹ wype³nione
+    //przedmiotami zgodnie z dzia³¹niem algortymu
+    void start();
     
     //Wylicza zysk przy prze³o¿eniu przedmiotu z plecak_pocz do plecak_doc
     //Bierze pod uwagê wszystkie mo¿liwe roz³o¿enia w plecakach po wykonaniu

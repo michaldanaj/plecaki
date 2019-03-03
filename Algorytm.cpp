@@ -1,8 +1,25 @@
 #include "Algorytm.h"
     
-Algorytm::Algorytm(Plecaki *plecaki_){
+Algorytm::Algorytm(Plecaki *plecaki_, int ile_przedmiotow_):ile_przedmiotow(ile_przedmiotow_){
     plecaki=plecaki_;
     odwiedzony = vector<bool>(plecaki->ile_plec,false);
+}
+
+void Algorytm::start(){
+            
+        int i=0;
+        bool czy_pelne=false;
+        
+        while(i < ile_przedmiotow && !czy_pelne){
+            if (debug)
+                cout <<"*************    Wkladam przedmiot "<< i+1 <<"*************\n\n";                        
+            czy_pelne = dodaj_przedmiot();
+            i++;
+        }
+  //          cout<<"po wykonaniu ruchu"<<endl;
+//            cout<<plecaki;
+            
+        //wysw_przedmioty();
 }
 
 double Algorytm::ocena_ruchu(const int plecak_pocz, const int plecak_doc, int ocena_akt){
