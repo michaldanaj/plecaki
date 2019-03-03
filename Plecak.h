@@ -2,12 +2,9 @@
 #define PLECAK_H
 
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <algorithm>
-#include <limits>
 #include <queue>
-#include <list>
 #include "Przedmiot.h"
 
 using namespace std;

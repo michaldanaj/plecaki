@@ -2,7 +2,6 @@
 #define PLECAKI_H
 #include <iostream>
 #include <vector>
-#include <list>
 #include "Plecak.h"
 
 
