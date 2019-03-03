@@ -11,7 +11,6 @@ bool debug=true;
 list<Przedmiot> przedmioty;
 int ile_plecakow;
 
-
 void wysw_przedmioty(){
     for (int i = 0; i<ile_plecakow; i++){
         cout << "Zawartosc plecaka " << i <<endl;
@@ -21,8 +20,6 @@ void wysw_przedmioty(){
             }
     }
 }
-
-
 
 int odczytaj_ile_plecakow(const string nazwa_pliku){
     ifstream plik(nazwa_pliku);
