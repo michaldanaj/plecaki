@@ -2,6 +2,7 @@
 #include <fstream>
 #include <list>
 #include "Algorytm.h"
+#include "AlgorytmBF.h"
 using namespace std;
 
 const string nazwa="plec1.txt";
@@ -65,7 +66,7 @@ bool odczytaj_dane(const string nazwa_pliku, Plecaki& plec){
     plik.close();
 }
 
-void init(Plecaki &plecaki){    
+void wczytaj_dane(Plecaki &plecaki){    
     
     odczytaj_dane(nazwa, plecaki);
     
@@ -93,8 +94,7 @@ int main(int argc, char** argv) {
     //ile_plecakow=3;
     ile_plecakow=odczytaj_ile_plecakow(nazwa);
     Plecaki plecaki(ile_plecakow);
-    
-    init(plecaki);
+    wczytaj_dane(plecaki);
 
     if (debug){    
         for (auto &el:przedmioty)
@@ -104,12 +104,13 @@ int main(int argc, char** argv) {
         cout<<plecaki;
     }
 
-    Algorytm alg(&plecaki, przedmioty.size());
+        
     try{        
-        alg.start();
+        AlgorytmBF alg(&plecaki, przedmioty);
+        //alg.start();
     }
     catch(string kom){
-        cout << kom;
+        cout << "ERROR: " << kom <<endl;
     }
     
  	return 0;

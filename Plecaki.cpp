@@ -36,6 +36,10 @@ int Plecaki::size() const{
     return plecaki.size();
 }
 
+int Plecaki::size(int i){
+    return plecaki[i].ile_prz;
+}
+
 //pojemnosc i-tego plecaka
 int Plecaki::poj(int i){
     if (i>=ile_plec)

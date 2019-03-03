@@ -30,7 +30,11 @@ class Plecaki{
     //parametrów przedmiotu i za³adowanie go do plecaka    
     void przywroc_przedmiot(Przedmiot* przed, int plecak_pocz);
     
+    //Zwraca liczbê plecaków (wlicza w to pulê)
     int size() const;
+    
+    //Zwraca liczbê przedmiotów w i-tym plecaku
+    int size(int i);
     
     //pojemnosc i-tego plecaka
     int poj(int i);

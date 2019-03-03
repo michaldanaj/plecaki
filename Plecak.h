@@ -78,7 +78,7 @@ class Plecak{
     Przedmiot& wyjmij(Przedmiot &prz);
 
     bool czy_pelny();
-
+    
     friend ostream &operator<<( ostream &output, const Plecak &c );
 };
 

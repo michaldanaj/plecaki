@@ -1,16 +1,30 @@
 #include "Algorytm.h"
     
-Algorytm::Algorytm(Plecaki *plecaki_, int ile_przedmiotow_):ile_przedmiotow(ile_przedmiotow_){
+Algorytm::Algorytm(Plecaki *plecaki_){
+    
     plecaki=plecaki_;
-    odwiedzony = vector<bool>(plecaki->ile_plec,false);
+        
+    //czy oby na pewno wszystkie przedmioty s¹ w puli
+    for (int i=1; i < plecaki->size(); i++){
+        cout << "poj " << i <<": "<<plecaki->poj(i)<< endl;
+        if (plecaki->size(i) > 0)
+            throw string("Przy starcie algorytmu plecaki musza byc puste!");
+    }
+    
+    odwiedzony = vector<bool>(plecaki->size(), false);
 }
 
 void Algorytm::start(){
-            
+ 
+         //czy oby na pewno wszystkie przedmioty s¹ w puli
+        for (int i=1; i < plecaki->size(); i++)
+            if (plecaki->size(i) > 0)
+                throw string("Przy starcie algorytmu plecaki musza byc puste!");
+                       
         int i=0;
         bool czy_pelne=false;
         
-        while(i < ile_przedmiotow && !czy_pelne){
+        while(i < plecaki->size(0) && !czy_pelne){
             if (debug)
                 cout <<"*************    Wkladam przedmiot "<< i+1 <<"*************\n\n";                        
             czy_pelne = dodaj_przedmiot();
