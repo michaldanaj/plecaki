@@ -14,6 +14,10 @@ void Plecaki::wypelnij_pule(list<Przedmiot>& przedmioty){
         plecaki[0].wloz(el);
 }
 
+void Plecaki::wloz_do_plecaka(Przedmiot *przed, int plecak_doc){
+    plecaki[plecak_doc].wloz(*przed);
+}
+
 //prze³adowuje przedmiot  miêdzy dwoma plecakami
 //zwraca wskaŸnik na prze³o¿ony przedmiot
 Przedmiot* Plecaki::przeloz(int pl1_id, int pl2_id){

@@ -5,21 +5,24 @@
 #include "AlgorytmBF.h"
 using namespace std;
 
-const string nazwa="plec1.txt";
-bool debug=true;
+const string nazwa="plec9.txt";
+bool debug=false;
 
 //vector<Przedmiot> przedmioty;
 list<Przedmiot> przedmioty;
 int ile_plecakow;
 
 void wysw_przedmioty(){
+    int zysk = 0;
     for (int i = 0; i<ile_plecakow; i++){
-        cout << "Zawartosc plecaka " << i <<endl;
+        cout << "Zawartosc plecaka " << i <<":"<<endl;
         for (auto &el:przedmioty)
             if (el.akt_plecak==i){
                 cout << "  ID: " << el.id << " Wartosc: " << el.w[i]<<endl;
+                zysk+=el.akt_wartosc;
             }
     }
+    cout << "wartosc przedmiotow w takiej konfiguracji wynosi "<<zysk;
 }
 
 int odczytaj_ile_plecakow(const string nazwa_pliku){
@@ -103,11 +106,12 @@ int main(int argc, char** argv) {
         cout<<endl;
         cout<<plecaki;
     }
-
-        
     try{        
-        AlgorytmBF alg(&plecaki, przedmioty);
-        //alg.start();
+        AlgorytmBF     alg(&plecaki, przedmioty);
+        //Algorytm     alg(&plecaki);
+        alg.start();
+        
+        wysw_przedmioty();
     }
     catch(string kom){
         cout << "ERROR: " << kom <<endl;

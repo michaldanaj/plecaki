@@ -21,6 +21,9 @@ class Plecaki{
     
     void wypelnij_pule(list<Przedmiot>& przedmioty);
     
+    //wk³ada do plecaka przedmiot.
+    void wloz_do_plecaka(Przedmiot *przed, int plecak_doc);
+    
     //prze³adowuje przedmiot  miêdzy dwoma plecakami
     //zwraca koszt operacji
     Przedmiot* przeloz(int pl1_id, int pl2_id);
