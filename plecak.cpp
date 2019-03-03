@@ -1,6 +1,6 @@
 #include "Plecak.h"
 
-Plecak::pom::pom(const Przedmiot *przed, int plecak_doc){
+Plecak::pom::pom(Przedmiot *przed, int plecak_doc){
         prz=przed;
         d=przed->d[plecak_doc];
 }
@@ -47,7 +47,7 @@ void Plecak::wloz(Przedmiot &prz){
         string kom="Próba za³adowania do plecaka, który jest pe³ny";
         throw kom;
     }
-    prz.wloz(id);
+    prz.update(id);
     ile_prz++;
     //wk³adam do ka¿dej kolejki
     for (int i=0; i < ile_plec; i++)

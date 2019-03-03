@@ -19,10 +19,10 @@ class Plecak{
     //przedmiotu z obecnego plecaka do i-tego. Jak ju¿ przedmiot znajdzie
     //siê w tym plecaku, mo¿na dodaæ go do kolejek
     struct pom{
-        const Przedmiot* prz;
+        Przedmiot* prz;
         double d;
         
-        pom(const Przedmiot *przed, int plecak_doc);
+        pom(Przedmiot *przed, int plecak_doc);
         
         friend int operator<(const pom& left, const pom& right){
                 return left.d<right.d;

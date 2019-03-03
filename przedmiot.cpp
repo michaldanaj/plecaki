@@ -21,7 +21,7 @@ void Przedmiot::wysw(){
     cout<<endl;
 }
    
-void Przedmiot::wloz(int j){        
+void Przedmiot::update(int j){        
     akt_plecak=j; 
     akt_wartosc=w[j];
     

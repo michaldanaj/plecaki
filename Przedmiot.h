@@ -21,8 +21,8 @@ class Przedmiot{
     
     void wysw();
 
-    //W³o¿enie przedmiotu do i-tego plecakda
-    void wloz(int j);
+    //Updateuje parametry przedmiou po w³o¿eniu go do i-tego plecakda
+    void update(int j);
     
     friend ostream &operator<<( ostream &output, const Przedmiot &p );    
 };
