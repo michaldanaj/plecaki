@@ -1,19 +1,9 @@
 #include "Plecak.h"
 
-
-
-
-Plecak::pom::pom(Przedmiot *przed, int plecak_doc){
+Plecak::pom::pom(const Przedmiot *przed, int plecak_doc){
         prz=przed;
         d=przed->d[plecak_doc];
 }
-
-
-
-//pomocnicza struktura, do przechowywania na i-ej kolejce informacje
-//ze wskaznikeme na przedmiot oraz delt¹, jak¹ jest przy przeniesieniu
-//przedmiotu z obecnego plecaka do i-tego. Jak ju¿ przedmiot znajdzie
-//siê w tym plecaku, mo¿na dodaæ go do kolejek
 
 Plecak::Plecak(const int id_, const int poj_, const int ile_plec_):id(id_), 
         poj(poj_), ile_plec(ile_plec_){
@@ -33,8 +23,6 @@ Przedmiot* Plecak::przed_do_przel(int plecak_doc){
     return pqs[plecak_doc].top().prz;
 }
 
-//kompresja plecaka. Jeœli na górze kolejki le¿¹ elementy nie nale¿¹ce
-//do danego plecaka, to je usuwa
 void Plecak::kompresja(){    
     //kompresja kolejek
    // cout <<"KOMPRESJA plecaka :"<<id<<endl;
@@ -52,9 +40,6 @@ void Plecak::kompresja(){
     }
 }
 
-//wk³ada przedmiot do tego plecaka, update'uj¹c niezbêdne parametry
-//umo¿liwiam w³o¿enie do plecaka o jeden przedmiot ni¿ jest jego pojemnoœæ
-//tylko na cele algorytmu. Zaraz po nim musi nast¹piæ wyjêcie z plecaka
 void Plecak::wloz(Przedmiot &prz){        
     //umo¿liwiam w³o¿enie do plecaka o jeden przedmiot ni¿ jest jego pojemnoœæ
     //tylko na cele algorytmu. Zaraz po nim musi nast¹piæ wyjêcie z plecaka
@@ -69,9 +54,6 @@ void Plecak::wloz(Przedmiot &prz){
         pqs[i].push(pom(&prz, i));                    
 }    
 
-//wyci¹ga przedmiot z plecaka, pozostawiaj¹c go w "pró¿ni"
-//updateuje przynale¿noœæ przedmiotu do plecaka na -1 (pró¿nia)
-//i kompresuje kolejki, usuwaj¹c z góry elementy przypisane do innych plecaków
 Przedmiot& Plecak::wyjmij(int plecak_doc){
     if (ile_prz==0)
         throw(string("Nie mozna wyladowac z plecaka, brak przemiotow"));
@@ -85,9 +67,6 @@ Przedmiot& Plecak::wyjmij(int plecak_doc){
     return *elem.prz;
 }
 
-//Jako ¿e nie wiadomo, gdzi w kolejkach znajduje siê przedmiot
-//mo¿na jedynie zmieniæ jego przypisanie i zmniejszyæ liczbê elemenów
-//w plecaku
 Przedmiot& Plecak::wyjmij(Przedmiot &prz){
     if (ile_prz==0)
         throw(string("Nie mozna wyladowac z plecaka, brak przemiotow"));
