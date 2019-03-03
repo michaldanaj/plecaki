@@ -9,23 +9,21 @@ using namespace std;
 
 class Przedmiot{
   public:
-    string id;
+    string id;              //identyfikator plecaka
     int akt_plecak;         //aktualny plecak w którym znajduje siê Przedmiot
-    double akt_wartosc;        //wartoœæ przedmiotu w aktualnym plecaku
-   // double max_d;          //maksymalna delta spoœród wszystkich plecaków
-    //int max_d_dokad;    //do którego plecaka kieruje maksymalna delta
+    double akt_wartosc;     //wartoœæ przedmiotu w aktualnym plecaku
     
     vector <double> w;      //wartoœæ przedmiotu w ka¿dym z plecaków
-    vector <double> d;  //delta przedmiotu z aktualnego miejsca do ka¿dego z plecaków
+    vector <double> d;      //delta przedmiotu z aktualnego miejsca do ka¿dego z plecaków
     
-    //Przedmiot(){;}
+    //Tworzy przedmiot i ustawia jego wartoœci tak, jakby by³ w puli
     Przedmiot(const string id_, const vector<double> wartosci);
+    
     void wysw();
-//    friend int operator<(const Przedmiot& left, const Przedmiot& right);
-  //  friend int operator>(const Przedmiot& left,
-    //           const Przedmiot& right);
-    //do jakiego plecaka przenieœæ ten element
+
+    //W³o¿enie przedmiotu do i-tego plecakda
     void wloz(int j);
+    
     friend ostream &operator<<( ostream &output, const Przedmiot &p );    
 };
 
