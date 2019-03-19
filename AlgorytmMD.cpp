@@ -45,7 +45,7 @@ double AlgorytmMD::ocena_ruchu(const int plecak_pocz, const int plecak_doc, int 
 
     //jeœli plecak nie jest pe³ny, to dodajê i próbujê wymieniæ z pul¹
     //i koñczê ocenê
-    if (plecaki->czy_pelny(plecak_doc)==false){
+    if (!plecaki->czy_pelny(plecak_doc)){
         double zysk;
 
         if (debug){
@@ -54,8 +54,6 @@ double AlgorytmMD::ocena_ruchu(const int plecak_pocz, const int plecak_doc, int 
         //cout<<*plecaki;
 
         //pobieram adres przemiotu, ¿eby póŸniej go wróciæ
-       // Przedmiot* przed=plecaki->przed_do_przel(plecak_pocz, plecak_doc);
-        //zysk = plecaki->przeloz(plecak_pocz, plecak_doc);
         zysk = plecaki->zysk_przelozenia(plecak_pocz, plecak_doc);
         ocena_akt += zysk;
         if (debug){
@@ -63,39 +61,11 @@ double AlgorytmMD::ocena_ruchu(const int plecak_pocz, const int plecak_doc, int 
             cout << "    Ocena koncowka: "<<ocena_akt<<endl;
         }
 
-        Przedmiot* prz = plecaki->przeloz(plecak_pocz, plecak_doc);
-
-        //sprawdzam, czy op³aca siê z docelowego plecaka wymieniæ siê z pul¹
-        //o ile Ÿród³owym plecakiem nie jest pula, bo wtedy nie ma to sensu
-        zysk = plecaki->zysk_wymiany(plecak_doc,0);
-        if (plecak_pocz != 0 && zysk>0){
-                ocena_akt =+ zysk;
-                //z plecaka do puli
-                sekw_ruchow.push_back(plecak_doc);
-                sekw_ruchow.push_back(0);
-                //z puli od plecaka
-                sekw_ruchow.push_back(0);
-                sekw_ruchow.push_back(plecak_doc);
-
-                if (ocena_max<ocena_akt){
-                    ocena_max=ocena_akt;
-                    sekw_ruchow_max=sekw_ruchow;
-                }
-                sekw_ruchow.pop_back();
-                sekw_ruchow.pop_back();
-                sekw_ruchow.pop_back();
-                sekw_ruchow.pop_back();
+        if (ocena_max < ocena_akt){
+            ocena_max = ocena_akt;
+            sekw_ruchow_max = sekw_ruchow;
         }
-        else{
-            //koniec ruchów. Oceniam czy jest to najlepsza sekwencja
-            if (ocena_max<ocena_akt){
-                ocena_max=ocena_akt;
-                sekw_ruchow_max=sekw_ruchow;
-            }
-        }
-        //z powrotem wracam przerzucony element
-        //plecaki->przywroc_przedmiot(przed, plecak_pocz);
-        plecaki->przywroc_przedmiot(prz, plecak_pocz);
+
     }
     //jeœli plecak nie jest pe³ny, to zag³êbiam siê
     else{
@@ -107,9 +77,7 @@ double AlgorytmMD::ocena_ruchu(const int plecak_pocz, const int plecak_doc, int 
             cout << ". Plecak pelny!" << endl;
             cout << "    Zysk czastkowy: "<<zysk<<endl;
         }
-//            cout << "    Ocena koncowka: "<<ocena_akt<<endl;
 
-        Przedmiot* prz = plecaki->przeloz(plecak_pocz, plecak_doc);
         //bêdê próbowa³ wstawiaæ do wszystkich mo¿liwych nieodwiedzonych plecaków
         for (int i=1; i < plecaki->ile_plec; i++){
             if (!odwiedzony[i]){
@@ -124,9 +92,7 @@ double AlgorytmMD::ocena_ruchu(const int plecak_pocz, const int plecak_doc, int 
                 //wk³adam od nowego docelowego przemiot
             }
         }
-        plecaki->przywroc_przedmiot(prz, plecak_pocz);
     }
-
 
     //odznaczam jako nieodwiedzony
     odwiedzony[plecak_doc]=false;
