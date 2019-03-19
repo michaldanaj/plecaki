@@ -19,10 +19,14 @@ class Przedmiot{
     //Tworzy przedmiot i ustawia jego wartoœci tak, jakby by³ w puli
     Przedmiot(const string id_, const vector<double> wartosci);
     
-    void wysw();
+    void wysw() const;
 
     //Updateuje parametry przedmiou po w³o¿eniu go do i-tego plecakda
     void update(int j);
+    
+    int ile_plecakow(){
+        return w.size();
+    }
     
     friend ostream &operator<<( ostream &output, const Przedmiot &p );    
 };

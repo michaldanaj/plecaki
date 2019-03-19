@@ -5,3 +5,13 @@ doc/*
 testy/*
 Plecak.layout
 gmon*
+bin/*
+obj/*
+paczka/*
+testy/*
+*.layout
+*.cbp
+*.cscope_file_list
+*.dev
+*.gch
+*.depend
